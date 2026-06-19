@@ -46,8 +46,11 @@ Important PVs:
 - Serial/error register: `StpM:SER`
 
 ## Documentation
-- Datasheet:
-- Manual:
+- Product page: https://arunmicro.com/products/D57-1_UHV_Compatible_Stepper_Motor/
+- Local datasheet: [[Documentation/Datasheet_VCSM.pdf]]
+- Online datasheet: https://arunmicro.com/documentation/Datasheet_VCSM.pdf
+- Local manual: [[Documentation/Manual_VCSM.pdf]]
+- Online manual: https://arunmicro.com/documentation/Manual_VCSM.pdf
 
 ## Maintenance
 - Installation date:

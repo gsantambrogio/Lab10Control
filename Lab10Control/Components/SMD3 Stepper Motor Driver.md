@@ -43,8 +43,12 @@ Important PVs:
 The driver controls the [[Stepper Motor D57.1 UHV]].
 
 ## Documentation
-- Datasheet:
-- Manual:
+- Product page: https://arunmicro.com/products/smd3-stepper-motor-drive/
+- Local datasheet: [[Documentation/Datasheet_SMD3.pdf]]
+- Online datasheet: https://arunmicro.com/documentation/Datasheet_SMD3.pdf
+- Local manual: [[Documentation/Manual_SMD3.pdf]]
+- Online manual: https://arunmicro.com/documentation/Manual_SMD3.pdf
+- Software page: https://arunmicro.com/documents/software/
 
 ## Maintenance
 - Installation date:
