@@ -1,30 +1,24 @@
-# Stepper Motor D57.1 UHV
+# SMD3 Stepper Motor Driver
 
 ## Description
-Motor - D57.1 UHV Stepper Motor 1,000 mNm, NEMA 23.
+SMD3 Stepper Motor Drive, single-axis bipolar stepper motor drive.
 
 ## Type
-Stepper motor
+Stepper motor driver
 
 ## Model
-D57.1 UHV Stepper Motor
+SMD3 Stepper Motor Drive
 
-## Specifications
-- Torque: 1,000 mNm
-- Frame size: NEMA 23
-- UHV compatible: yes
+## Controlled device
+- [[Stepper Motor D57.1 UHV]]
 
 ## Connected to
-- [[SMD3 Stepper Motor Driver]]
-
-## Location
-
-## Used for
+- Motor: [[Stepper Motor D57.1 UHV]]
+- Control system:
+- Power supply:
 
 ## EPICS
-PV prefix: StpM:
-
-Controlled through: [[SMD3 Stepper Motor Driver]]
+PV prefix: `StpM:`
 
 Important PVs:
 - Temperature: `StpM:Temp`
@@ -44,6 +38,9 @@ Important PVs:
 - Moving: `StpM:Moving`
 - Status flags: `StpM:SFlags`
 - Serial/error register: `StpM:SER`
+
+## Control
+The driver controls the [[Stepper Motor D57.1 UHV]].
 
 ## Documentation
 - Datasheet:
