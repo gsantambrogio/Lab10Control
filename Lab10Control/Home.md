@@ -1,4 +1,6 @@
-# Lab10Control
+# Lab10Control 
+
+## Components
 
 ## Lasers
 
