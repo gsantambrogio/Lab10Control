@@ -1,13 +1,24 @@
-# Lab10Control 
+# Lab10Control
+
+Digital twin, documentation and control knowledge base for Lab10.
+
+## Subsystems
+
+- [[Source/Source|Source]]
 
 ## Components
 
-## Lasers
+- [[Stepper Motor D57.1 UHV]]
+- [[SMD3 Stepper Motor Driver]]
 
-## Vacuum System
+## Areas
 
-## Electronics
+- [[Lasers]]
+- [[Vacuum]]
+- [[Electronics]]
+- [[EPICS]]
+- [[Maintenance]]
 
-## EPICS Controls
+## General
 
-## Maintenance Log
+- [[Welcome]]

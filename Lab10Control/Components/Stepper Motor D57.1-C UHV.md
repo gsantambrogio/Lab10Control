@@ -1,16 +1,18 @@
-# Stepper Motor D57.1 UHV
+# Stepper Motor D57.1-C UHV
 
 ## Description
-1,000 mNm, NEMA 23.
+1,000 mNm, NEMA 23, 
+Option - C,  Cryogenic. Extended operating temperature range. -196 °C to +190 °C (dry lubricated bearings) - dry lubricated (tungsten disulfide) hybrid silicon nitride ceramic bearings used for option C.
 
 ## Type
 Stepper motor
 
 ## Model
-D57.1 UHV Stepper Motor
+D57.1-C UHV Stepper Motor
 
 ## Serial Number
-24221-007
+23141-006
+
 ## Specifications
 - Torque: 1,000 mNm
 - Frame size: NEMA 23
