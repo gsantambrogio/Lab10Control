@@ -18,6 +18,7 @@ Digital twin, documentation and control knowledge base for Lab10.
 - [[Electronics]]
 - [[EPICS]]
 - [[Maintenance]]
+- [[Transitions]]
 
 ## General
 
