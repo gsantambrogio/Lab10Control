@@ -4,7 +4,7 @@ tags:
 ---
 
 # IP
-10.100.2.29
+10.100.2.6
 
 # Model
 Raspberry pi 3b
@@ -13,5 +13,6 @@ Raspberry pi 3b
 EPICS 
 
 # IOCs
-[[EPICS/IOCs]]: cryo2
+[[EPICS/IOCs]]: lasers
+
 
