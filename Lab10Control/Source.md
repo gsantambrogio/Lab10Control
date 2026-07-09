@@ -1,21 +1,20 @@
-# Source
-
-## Description
+```dataview
+LIST
+FROM #EPICS 
+SORT file.name ASC
+```
+# Description
 Subsystem containing the atomic/molecular source and related mechanical, vacuum, electronic and control components.
 
-## Components
+# Components
 - [[Stepper Motor D57.1 UHV]]
 - [[Stepper Motor D57.1-C UHV]]
 
-## Drivers and electronics
+# Drivers and electronics
 - [[SMD3 Stepper Motor Driver]]
 
-## Related systems
-- [[Vacuum]]
-- [[Electronics]]
+# Documentation
 
-## Documentation
-
-## Maintenance
+# Maintenance
 
 ## Notes

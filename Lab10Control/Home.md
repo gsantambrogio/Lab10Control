@@ -4,7 +4,7 @@ Digital twin, documentation and control knowledge base for Lab10.
 
 ## Subsystems
 
-- [[Source/Source|Source]]
+- [[Source|Source]]
 
 ## Components
 
@@ -18,7 +18,7 @@ Digital twin, documentation and control knowledge base for Lab10.
 - [[Electronics]]
 - [[EPICS]]
 - [[Maintenance]]
-- [[Transitions]]
+- [[CaF Transitions]]
 
 ## General
 
