@@ -12,6 +12,8 @@ DLC TA-SHG Pro
 - SHG output power: 1 W (in 2026 we actually had 1.5 W output power)
 
 # Locking
+The fundamental of the laser at 1257.2 nm is beaten against a portion of the comb light, separated with a grating. The beatnote is detected using the differential photodiodes (Koheron PDX10B-SI), powered by [[PowerSupply Funk PWS-05B-T]], and the signal is amplified with the [[Amplifier ZFL-500LN+]]
+
 Locked with the Vescent 1. Local oscillator WFG-B. 
 
 # Modulation
