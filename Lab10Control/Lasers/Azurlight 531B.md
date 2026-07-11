@@ -13,8 +13,8 @@ Output power 10 W at 531 nm
 Seeded by [[NKT photonics laser]]
 
 # Locking
-The amplified light of the seed [[NKT photonics laser]], Output 1, is beaten with the comb on the koheron differential photidiode, which is powered by the [[PowerSupply Funk PWS-05B-T]] power supply. The signal is amplified by a [[Amplifier ZFL-500LN+]]
+The amplified light of the seed [[NKT photonics laser]], Output 1, is beaten with the comb on the [[Photodiode PDX10B]], which is powered by the [[PowerSupply Funk PWS-05B-T]]. The signal is amplified by a [[Amplifier ZFL-500LN+]]
 
 Reference Local oscillators  - LO1 (Siglent SDG1062X 60MHz Function)
 
-Servo units - Vescent2 (Power supplies for the servo - funk3 (PWS-08MP-T.V2  +5 V — 3000 mA ) and funk4 (PWS-06B-T +/- 15 V — 800 mA) )
+Servo units - Vescent2 powered by [[PowerSupply Funk PWS-08MP-T.V2]] and [[PowerSupply Funk PWS-06B-T]]
