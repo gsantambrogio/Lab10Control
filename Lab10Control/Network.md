@@ -1,6 +1,6 @@
 | IP          | Hostname               | Description                                |
 | ----------- | ---------------------- | ------------------------------------------ |
-| 10.100.2.1  | zeus                   | Desktop. Public IP: 150.217.142.115        |
+| 10.100.2.1  | zeus                   | Desktop.                                   |
 | 10.100.2.2  | WaveformGen AFG3052C   |                                            |
 | 10.100.2.3  | Delay Generator Elab   |                                            |
 | 10.100.2.4  | Toptica 1300           |                                            |
