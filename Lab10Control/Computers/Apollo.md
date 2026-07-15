@@ -17,11 +17,14 @@ EPICS
 
 
 # System files
+### USB
  `cat /etc/udev/rules.d/99-usb-serial.rules`
  ```
  UBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", SYMLINK+="YAG"
 SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", ATTRS{serial}=="6492", SYMLINK+="bristol621"
  ```
+###  rc.local
+ 
  `cat /etc/rc.local` 
 
 ``` 
@@ -45,5 +48,4 @@ if [ "$_IP" ]; then
 fi
 su pi -c 'screen -dm bash -c "sleep 30; cd /home/pi/Apps/epics/IOCs/lasers/iocBoot/ioclasersIOC/; ./st.cmd;"'
 exit 0
-
 ```
