@@ -46,6 +46,9 @@ _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
-su pi -c 'screen -dm bash -c "sleep 30; cd /home/pi/Apps/epics/IOCs/lasers/iocBoot/ioclasersIOC/; ./st.cmd;"'
+su pi -c 'screen -dmS lasersIOC bash -c "sleep 28; cd /home/pi/Apps/epics/IOCs/lasers/iocBoot/ioclasersIOC/; ./st.cmd"'
+su pi -c 'screen -dmS bristol621IOC bash -c "sleep 30; cd /home/pi/Apps/epics/IOCs/bristol621/iocBoot/iocbristol621/; ./st.cmd"'
+su pi -c 'screen -dmS waveformIOC bash -c "sleep 32; cd /home/pi/Apps/epics/IOCs/waveform_gen/iocBoot/iocsdg_waveform/; ./st.cmd"'
 exit 0
+
 ```
