@@ -13,5 +13,5 @@ Raspberry pi 3b
 EPICS 
 
 # IOCs
-[[EPICS/IOCs]]: cryo2
+[[IOCs]]: cryo2
 

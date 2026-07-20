@@ -13,7 +13,7 @@ Raspberry pi 3b
 EPICS 
 
 # IOCs
-[[EPICS/IOCs]]: cryo
+[[IOCs]]: cryo
 
 
 # System files

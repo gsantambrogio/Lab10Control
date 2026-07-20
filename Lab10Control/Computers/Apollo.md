@@ -13,7 +13,7 @@ Raspberry pi 3b
 EPICS 
 
 # IOCs
-[[EPICS/IOCs]]: lasers, bristol621, waveform_gen
+[[IOCs]]: lasers, bristol621, waveform_gen
 
 
 # System files
