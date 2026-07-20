@@ -36,6 +36,12 @@
 | 10.100.2.34 | RedPitaya4             | RedPitaya                                  |
 | 10.100.2.35 | WFGA                   | SIGLENT SDG 1062X                          |
 | 10.100.2.36 | WFGB                   | SIGLENT SDG 1062X                          |
+| 10.100.2.37 | WFGC                   | SIGLENT SDG 1062X                          |
+| 10.100.2.38 | WFGD                   | RIGOL DG 912 Pro                           |
+| 10.100.2.39 | WFGE                   | Keysight 33500B                            |
+| 10.100.2.40 | WFGF                   | RIGOL DG1022                               |
+| 10.100.2.41 | WFGG                   | RIGOL DG 912 Pro                           |
+| 10.100.2.42 | WFGH                   | RIGOL DG 922 Pro                           |
 
 Mask: 255.255.255.0
 Router: 10.100.2.1

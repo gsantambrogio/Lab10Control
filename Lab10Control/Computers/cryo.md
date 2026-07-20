@@ -15,6 +15,7 @@ EPICS
 # IOCs
 [[EPICS/IOCs]]: cryo
 
+
 # System files
 `cat /etc/rc.local`
 ```
@@ -36,8 +37,8 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 su pi -c 'screen -dm -S ioccryo bash -c "sleep 30; cd /home/pi/EPICS/IOCs/cryo/iocBoot/ioccryo/; ./st.cmd;"'
+su pi -c 'screen -dm -S cryomech bash -c "sleep 30; cd /home/pi/EPICS/IOCs/cryomech/iocBoot/ioccryomech/; ./st.cmd;"'
 su pi -c 'screen -d -m -S AVC /home/pi/EPICS/IOCs/cryo/python/AVC.sh'
-su pi -c 'screen -d -m -S CPAd /home/pi/EPICS/IOCs/cryo/python/CPAd.sh'
 su pi -c 'screen -d -m -S TelAlarms /home/pi/EPICS/IOCs/cryo/python/TelAlarms.sh'
 exit 0
 ```

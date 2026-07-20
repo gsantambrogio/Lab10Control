@@ -12,21 +12,6 @@ Relais board controlling vacuum valves
 - Valve1: Switch ON and OFF valve between [[ACP28-40 Scroll]] and big turbo
 - ValveUHV: Switch ON and OFF valve between source and UHV 
 
-## CPA
-Cryostat
-### PVs
-- cryo:waterIn: Temperature of cooling water input
-- cryo:waterOut: Temperature of cooling water output
-- cryo:oil: Oil temperature
-- cryo:helium: Helium temperature
-- cryo:lowPressure: Pressure Helium Low
-- cryo:lowPressureAvg: Pressure Helium Low Avg
-- cryo:highPressure: Pressure Helium High
-- cryo:highPressureAvg: Pressure Helium High Avg
-- cryo:hours: Hours of operation
-- cryo:switch: Switches ON and OFF
-- cryo:warnings: Warnings
-
 ## CTC Temperature controller
 Stanford temperature controller. 4 temperature sensors. 2 PIDs
 ### PVs
