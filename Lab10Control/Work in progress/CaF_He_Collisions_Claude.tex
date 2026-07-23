@@ -1,0 +1,246 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{titlesec}
+
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}, retain-explicit-plus=false, group-digits=false}
+
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+\definecolor{hdrblue}{HTML}{2C3E50}
+\definecolor{rowgray}{HTML}{F2F2F2}
+
+\newcommand{\hdr}[1]{\textcolor{white}{\textbf{#1}}}
+
+\title{\textbf{CaF--He Collision Estimate: Formulas and Distance Tables}}
+\author{by \emph{Claude}}
+\date{\today}
+
+\begin{document}
+\maketitle
+\vspace{-2.5em}
+
+\noindent
+Estimate of the number of CaF--He collisions from the buffer-gas-cell nozzle exit ($z=0$) out to
+$z = 1\,\text{m}$, for a cryogenic buffer-gas source adapted for pulsed-ablation CaF production on the
+continuous-flow cell design of Gangwar \textit{et al.}, ``Buffer gas cooling of a continuous CO
+molecular beam,'' \textit{Optics Express} \textbf{33}, 28164 (2025),
+\href{https://doi.org/10.1364/OE.560951}{doi:10.1364/OE.560951}.
+
+\section*{Input parameters}
+
+\begin{center}
+\begin{tabular}{@{}p{3.3cm}p{1.4cm}p{3.0cm}p{6.3cm}@{}}
+\toprule
+\rowcolor{hdrblue}
+\hdr{Quantity} & \hdr{Symbol} & \hdr{Value} & \hdr{Source} \\
+\midrule
+Cell / nozzle temperature & $T$ & \SI{4}{K} & user-specified (cell 4 K stage; 3.7 K measured in the paper) \\
+\rowcolor{rowgray} He flow rate & $f_{He}$ & 20 sccm $= \num{9.0e18}\,\text{s}^{-1}$ & user-specified; 1 sccm $=\num{4.5e17}\,\text{s}^{-1}$ (paper's own conversion) \\
+Nozzle diameter & $d$ & 3 mm and 5 mm & range tested in the paper (2--5 mm); brackets typical CaF cells \\
+\rowcolor{rowgray} CaF--He cross section & $\sigma$ & $\num{1e-14}\,\text{cm}^2$ & order-of-magnitude value used throughout buffer-gas literature (paper uses the same value for CO--He) \\
+Background chamber pressure & $P_{bg}$ & $\num{1e-7}$ mbar & paper's stated typical operating pressure, both chambers \\
+\rowcolor{rowgray} Background gas temperature & $T_{bg}$ & \SI{300}{K} & gauge reads pressure referenced to room temperature \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+\noindent Two collision zones are combined: (1) a \emph{near-field} zone right at the nozzle where the
+He is still dense and the flow is expanding hydrodynamically (this is where essentially all the
+collisions happen), and (2) a \emph{far-field} zone where the molecule coasts through the low residual
+chamber pressure. Collisions inside the buffer-gas cell itself (thermalization, upstream of $z=0$) are
+not included here.
+
+\section*{Formulas used}
+
+\subsection*{1. Mean thermal speed of He at temperature $T$}
+\begin{equation}
+\bar{v}_{He} = \sqrt{\dfrac{8 k_B T}{\pi m_{He}}}
+\end{equation}
+
+\subsection*{2. He number density at the aperture (stagnation density)}
+\begin{equation}
+n_0 = \dfrac{4 f_{He}}{A_{aperture}\, \bar{v}_{He}}, \qquad
+A_{aperture} = \dfrac{\pi d^2}{4}
+\end{equation}
+where $f_{He}$ is the He flow in particles/s (1 sccm $= \num{4.5e17}\,\text{s}^{-1}$).
+
+\subsection*{3. He--He mean free path near the aperture}
+\begin{equation}
+\lambda_{He} = \dfrac{1}{\sqrt{2}\, n_0\, \sigma_{He\text{-}He}}
+\end{equation}
+
+\subsection*{4. Reynolds number of the expansion}
+\begin{equation}
+Re \approx \dfrac{2 d}{\lambda_{He}}
+\end{equation}
+
+\subsection*{5. Total collisions picked up near the orifice}
+\begin{equation}
+N_{\text{near-field}} \approx Re/2
+\end{equation}
+(standard buffer-gas-beam result, Hutzler \textit{et al.}, \textit{Chem.\ Rev.} \textbf{112}, 4803 (2012);
+used directly in the source paper.)
+
+\subsection*{6. Local He density vs.\ distance downstream (free-jet scaling)}
+\begin{equation}
+n(z) =
+\begin{cases}
+n_0, & z \le z^{*} \\[4pt]
+0.15\, n_0 \left(\dfrac{d}{z}\right)^{2}, & z > z^{*}
+\end{cases}
+\qquad\text{floored at } n_{bg}\ \text{if smaller,} \qquad z^{*} = \sqrt{0.15}\; d
+\end{equation}
+
+\subsection*{7. Local collision rate (inverse local mean free path)}
+\begin{equation}
+\dfrac{dN}{dz}(z) = n(z)\, \sigma_{CaF\text{-}He} \qquad [\text{cm}^{-1}]
+\end{equation}
+
+\subsection*{8. Cumulative collisions from nozzle exit to distance $z$}
+\begin{equation}
+N(z) = \int_0^{z} \dfrac{dN}{dz'}\, dz' \;=\; N_{\text{near-field}} \cdot f(z) \;+\; n_{bg}\, \sigma_{CaF\text{-}He}\, z
+\end{equation}
+\begin{equation}
+f(z) = \dfrac{z}{2 z^{*}} \ (z \le z^{*}), \qquad
+f(z) = 1 - \dfrac{z^{*}}{2 z} \ (z > z^{*})
+\end{equation}
+where $n_{bg} = P_{bg} / (k_B T_{bg})$ is the background chamber density from the gauge reading.
+
+\subsection*{9. Background (far-field) contribution}
+\begin{equation}
+N_{bg}(z) = n_{bg}\, \sigma_{CaF\text{-}He}\, z
+\end{equation}
+
+\bigskip
+\noindent\textit{Note: the near-field density profile $n(z)$ (item 6) is a standard free-jet-expansion
+scaling ($z^{-2}$ falloff past a few nozzle diameters), not itself taken from the paper; it is normalized
+so that its integral reproduces the paper's cited near-orifice total, $N_{\text{near-field}}\approx Re/2$.
+The $z^{-2}$ shape and the $Re/2$ total are therefore on different footings: the total is a
+literature-standard result, the distance-dependence is a reasonable modeling choice calibrated to it.}
+
+\clearpage
+\section*{Derived quantities for the two nozzle sizes}
+
+\begin{center}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\rowcolor{hdrblue}
+\hdr{Quantity} & \hdr{3 mm nozzle} & \hdr{5 mm nozzle} \\
+\midrule
+Aperture area $A$ (cm$^2$) & \num{0.07069} & \num{0.19635} \\
+\rowcolor{rowgray} Cell/aperture density $n_0$ (cm$^{-3}$) & \num{3.501e16} & \num{1.2605e16} \\
+He--He mean free path ($\mu$m) & \num{20.20} & \num{56.10} \\
+\rowcolor{rowgray} Reynolds number $Re$ & \num{297.1} & \num{178.3} \\
+Near-field total, $Re/2$ & \num{148.5} & \num{89.13} \\
+\rowcolor{rowgray} Matching distance $z^{*}$ (mm) & \num{1.162} & \num{1.936} \\
+Background density $n_{bg}$ (cm$^{-3}$) & \num{2.414e9} & \num{2.414e9} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\clearpage
+\section*{Results: 3 mm nozzle}
+
+\subsection*{Fine-resolution table, 0--10 mm (0.5 mm steps)}
+\noindent\textit{This is where essentially all the near-field collisions occur.}
+
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{1.6cm} >{\raggedleft\arraybackslash}p{3.6cm} >{\raggedleft\arraybackslash}p{3.6cm} >{\raggedleft\arraybackslash}p{3cm}@{}}
+\toprule
+\rowcolor{hdrblue}
+\hdr{$z$ (mm)} & \hdr{rate $dN/dz$ (cm$^{-1}$)} & \hdr{collisions in 0.5-mm bin} & \hdr{cumulative $N(z)$} \\
+\midrule
+\endfirsthead
+\toprule
+\rowcolor{hdrblue}
+\hdr{$z$ (mm)} & \hdr{rate $dN/dz$ (cm$^{-1}$)} & \hdr{collisions in 0.5-mm bin} & \hdr{cumulative $N(z)$} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\input{fine_3mm_rows.tex}
+\end{longtable}
+
+\subsection*{Per-centimeter table, 0--100 cm (1 cm steps)}
+\noindent\textit{Rate and per-bin collisions collapse to the residual background-gas value beyond a few
+cm; cumulative total asymptotes to $Re/2 = 148.5$.}
+
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{1.6cm} >{\raggedleft\arraybackslash}p{3.6cm} >{\raggedleft\arraybackslash}p{3.6cm} >{\raggedleft\arraybackslash}p{3cm}@{}}
+\toprule
+\rowcolor{hdrblue}
+\hdr{$z$ (cm)} & \hdr{rate $dN/dz$ (cm$^{-1}$)} & \hdr{collisions in 1-cm bin} & \hdr{cumulative $N(z)$} \\
+\midrule
+\endfirsthead
+\toprule
+\rowcolor{hdrblue}
+\hdr{$z$ (cm)} & \hdr{rate $dN/dz$ (cm$^{-1}$)} & \hdr{collisions in 1-cm bin} & \hdr{cumulative $N(z)$} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\input{coarse_3mm_rows.tex}
+\end{longtable}
+
+\clearpage
+\section*{Results: 5 mm nozzle}
+
+\subsection*{Fine-resolution table, 0--10 mm (0.5 mm steps)}
+\noindent\textit{This is where essentially all the near-field collisions occur.}
+
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{1.6cm} >{\raggedleft\arraybackslash}p{3.6cm} >{\raggedleft\arraybackslash}p{3.6cm} >{\raggedleft\arraybackslash}p{3cm}@{}}
+\toprule
+\rowcolor{hdrblue}
+\hdr{$z$ (mm)} & \hdr{rate $dN/dz$ (cm$^{-1}$)} & \hdr{collisions in 0.5-mm bin} & \hdr{cumulative $N(z)$} \\
+\midrule
+\endfirsthead
+\toprule
+\rowcolor{hdrblue}
+\hdr{$z$ (mm)} & \hdr{rate $dN/dz$ (cm$^{-1}$)} & \hdr{collisions in 0.5-mm bin} & \hdr{cumulative $N(z)$} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\input{fine_5mm_rows.tex}
+\end{longtable}
+
+\subsection*{Per-centimeter table, 0--100 cm (1 cm steps)}
+\noindent\textit{Rate and per-bin collisions collapse to the residual background-gas value beyond a few
+cm; cumulative total asymptotes to $Re/2 = 89.13$.}
+
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{1.6cm} >{\raggedleft\arraybackslash}p{3.6cm} >{\raggedleft\arraybackslash}p{3.6cm} >{\raggedleft\arraybackslash}p{3cm}@{}}
+\toprule
+\rowcolor{hdrblue}
+\hdr{$z$ (cm)} & \hdr{rate $dN/dz$ (cm$^{-1}$)} & \hdr{collisions in 1-cm bin} & \hdr{cumulative $N(z)$} \\
+\midrule
+\endfirsthead
+\toprule
+\rowcolor{hdrblue}
+\hdr{$z$ (cm)} & \hdr{rate $dN/dz$ (cm$^{-1}$)} & \hdr{collisions in 1-cm bin} & \hdr{cumulative $N(z)$} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\input{coarse_5mm_rows.tex}
+\end{longtable}
+
+\section*{Caveats}
+$\sigma_{CaF\text{-}He} = \num{1e-14}\,\text{cm}^2$ is a generic order-of-magnitude value for
+molecule--He pairs used across the buffer-gas-beam literature; the true CaF--He elastic cross section
+has energy-dependent structure (see e.g.\ Londo\~no \& P\'erez-R\'ios, \textit{J.\ Chem.\ Phys.}
+\textbf{162}, 234304 (2025)) and could differ by a factor of a few. The near-field $z$-dependence
+(item 6 in the formulas) is a standard free-jet scaling normalized to reproduce the paper's own $Re/2$
+total, not a first-principles result for this specific cell. Background pressure is taken as the
+paper's own quoted steady-state operating value ($\num{1e-7}$ mbar); the transient gas/plasma load from
+the ablation pulse itself is not included.
+
+\end{document}

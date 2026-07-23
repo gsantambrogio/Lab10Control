@@ -1,0 +1,176 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{amsmath,amssymb,siunitx,booktabs,longtable,array,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{enumitem}
+\sisetup{scientific-notation=true,exponent-product=\times,per-mode=symbol}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\title{Helium--CaF Collision Rates after a 4 K Buffer-Gas Source\\[4pt]
+\large Technical note prepared by ChatGPT (OpenAI)}
+\author{}
+\date{23 July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note gives an analytical estimate of the collision rate experienced by CaF molecules after they leave the aperture of the cryogenic source described by the user. It reports the local collision rate as a function of distance, the expected number of collisions in each successive \SI{1}{cm} interval, and the cumulative collision number. The model is intended as an engineering estimate. In the first few aperture diameters the expansion is hydrodynamic, so a quantitatively reliable treatment requires a DSMC or equivalent rarefied-gas simulation.
+\end{abstract}
+
+\section{Source parameters}
+The calculation uses:
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Helium flow & \SI{20}{sccm}, continuous \\
+Cell temperature & \SI{4}{K} \\
+Exit aperture & \SI{4}{mm} diameter, $a=\SI{2}{mm}$ radius \\
+CaF production & \SI{10}{ns} ablation pulse at \SI{10}{Hz} \\
+CaF forward speed & $v_{\mathrm{CaF}}=\SI{160}{m.s^{-1}}$ \\
+Reference elastic cross section & $\sigma=\SI{1e-18}{m^2}$ \\
+Pressure at a \SI{300}{K} wall, \SI{50}{cm} away & $2\times10^{-5}\,\mathrm{mbar}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The CaF production is pulsed, whereas helium is flowed continuously. Therefore, the quantities below apply to each CaF molecule in each pulse. The \SI{10}{Hz} repetition rate does not enter the collision probability per molecule, provided the ablation pulse does not substantially disturb the stationary helium-flow field.
+
+\section{Analytical model}
+The helium particle flow corresponding to \SI{20}{sccm} is
+\begin{equation}
+\dot N_{\mathrm{He}} = 8.96\times10^{18}\ \mathrm{s^{-1}}.
+\end{equation}
+
+Outside the aperture, the on-axis helium density is approximated by a regularized hemispherical expansion,
+\begin{equation}
+ n_{\mathrm{He}}(z)=
+ \frac{\dot N_{\mathrm{He}}}
+ {\pi u_{\mathrm{He}}\left(z^2+a^2\right)},
+\end{equation}
+where $u_{\mathrm{He}}=\SI{160}{m.s^{-1}}$ and $a=\SI{2}{mm}$. The $a^2$ term prevents an unphysical divergence at the aperture. This regularization is a convenient interpolation, not a rigorous solution of the near-field gas dynamics.
+
+The local CaF--He collision rate is
+\begin{equation}
+ \Gamma(z)=n_{\mathrm{He}}(z)\,\sigma\,\langle v_{\mathrm{rel}}\rangle.
+\end{equation}
+For co-propagating CaF and cold helium, we use
+\begin{equation}
+ \langle v_{\mathrm{rel}}\rangle=\SI{145}{m.s^{-1}},
+\end{equation}
+representative of the helium thermal speed at \SI{4}{K}. Combining the preceding expressions gives
+\begin{equation}
+ \boxed{\Gamma(z)=\frac{2.58}{z^2+(0.002)^2}\ \mathrm{s^{-1}}},
+\end{equation}
+with $z$ expressed in metres and $\sigma=\SI{1e-18}{m^2}$.
+
+The expected number of collisions while the molecule travels from $z_1$ to $z_2$ is
+\begin{align}
+ \Delta N(z_1,z_2)
+ &=\int_{z_1}^{z_2}\frac{\Gamma(z)}{v_{\mathrm{CaF}}}\,\mathrm{d}z \\
+ &=\frac{K}{a v_{\mathrm{CaF}}}
+ \left[
+ \tan^{-1}\!\left(\frac{z_2}{a}\right)
+ -\tan^{-1}\!\left(\frac{z_1}{a}\right)
+ \right],
+\end{align}
+where $K=\SI{2.58}{m^2.s^{-1}}$. The cumulative collision number from the aperture to distance $z$ is therefore
+\begin{equation}
+ \boxed{N(0,z)=\frac{K}{a v_{\mathrm{CaF}}}
+ \tan^{-1}\!\left(\frac{z}{a}\right)}.
+\end{equation}
+
+All rates and collision counts scale linearly with the assumed cross section:
+\begin{equation}
+ \Gamma,\ \Delta N,\ N \propto
+ \frac{\sigma}{\SI{1e-18}{m^2}}.
+\end{equation}
+
+\section{Distance-resolved results}
+The column ``collisions in this centimetre'' is the expectation value accumulated while the molecule travels from $(z-1)$ to $z$ centimetres. ``Cumulative from aperture'' includes the model-dependent first centimetre. Since the first few millimetres are hydrodynamic, the final column also gives the more robust cumulative count starting at \SI{1}{cm}.
+
+\small
+\begin{longtable}{@{}r r r r r r@{}}
+\caption{Local and cumulative CaF--He collision estimates for $\sigma=\SI{1e-18}{m^2}$.}\label{tab:distance}\\
+\toprule
+$z$ & $\Gamma(z)$ & mean time & collisions & cumulative & cumulative \\
+(cm) & (s$^{-1}$) & between collisions & in this cm & from aperture & from 1 cm \\
+\midrule
+\endfirsthead
+\toprule
+$z$ & $\Gamma(z)$ & mean time & collisions & cumulative & cumulative \\
+(cm) & (s$^{-1}$) & between collisions & in this cm & from aperture & from 1 cm \\
+\midrule
+\endhead
+\midrule
+\multicolumn{6}{r}{Continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+1 & 2.48e+04 & $40.3~\mu\mathrm{s}$ & 11.073 & 11.073 & 0.000 \\
+2 & 6.39e+03 & $156.6~\mu\mathrm{s}$ & 0.788 & 11.861 & 0.788 \\
+3 & 2.85e+03 & $350.4~\mu\mathrm{s}$ & 0.267 & 12.128 & 1.055 \\
+4 & 1.61e+03 & $621.7~\mu\mathrm{s}$ & 0.134 & 12.262 & 1.189 \\
+5 & 1.03e+03 & $970.5~\mu\mathrm{s}$ & 0.080 & 12.342 & 1.269 \\
+6 & 716 & $1.40~\mathrm{ms}$ & 0.054 & 12.396 & 1.323 \\
+7 & 526 & $1.90~\mathrm{ms}$ & 0.038 & 12.434 & 1.361 \\
+8 & 403 & $2.48~\mathrm{ms}$ & 0.029 & 12.463 & 1.390 \\
+9 & 318 & $3.14~\mathrm{ms}$ & 0.022 & 12.485 & 1.412 \\
+10 & 258 & $3.88~\mathrm{ms}$ & 0.018 & 12.503 & 1.430 \\
+11 & 213 & $4.69~\mathrm{ms}$ & 0.015 & 12.518 & 1.445 \\
+12 & 179 & $5.58~\mathrm{ms}$ & 0.012 & 12.530 & 1.457 \\
+13 & 153 & $6.55~\mathrm{ms}$ & 0.010 & 12.541 & 1.467 \\
+14 & 132 & $7.60~\mathrm{ms}$ & 0.009 & 12.549 & 1.476 \\
+15 & 115 & $8.72~\mathrm{ms}$ & 0.008 & 12.557 & 1.484 \\
+16 & 101 & $9.92~\mathrm{ms}$ & 0.007 & 12.564 & 1.491 \\
+17 & 89.3 & $11.20~\mathrm{ms}$ & 0.006 & 12.570 & 1.497 \\
+18 & 79.6 & $12.56~\mathrm{ms}$ & 0.005 & 12.575 & 1.502 \\
+19 & 71.5 & $13.99~\mathrm{ms}$ & 0.005 & 12.580 & 1.507 \\
+20 & 64.5 & $15.51~\mathrm{ms}$ & 0.004 & 12.584 & 1.511 \\
+21 & 58.5 & $17.09~\mathrm{ms}$ & 0.004 & 12.588 & 1.515 \\
+22 & 53.3 & $18.76~\mathrm{ms}$ & 0.003 & 12.591 & 1.518 \\
+23 & 48.8 & $20.51~\mathrm{ms}$ & 0.003 & 12.594 & 1.521 \\
+24 & 44.8 & $22.33~\mathrm{ms}$ & 0.003 & 12.597 & 1.524 \\
+25 & 41.3 & $24.23~\mathrm{ms}$ & 0.003 & 12.600 & 1.527 \\
+26 & 38.2 & $26.20~\mathrm{ms}$ & 0.002 & 12.603 & 1.529 \\
+27 & 35.4 & $28.26~\mathrm{ms}$ & 0.002 & 12.605 & 1.532 \\
+28 & 32.9 & $30.39~\mathrm{ms}$ & 0.002 & 12.607 & 1.534 \\
+29 & 30.7 & $32.60~\mathrm{ms}$ & 0.002 & 12.609 & 1.536 \\
+30 & 28.7 & $34.89~\mathrm{ms}$ & 0.002 & 12.611 & 1.538 \\
+31 & 26.8 & $37.25~\mathrm{ms}$ & 0.002 & 12.613 & 1.539 \\
+32 & 25.2 & $39.69~\mathrm{ms}$ & 0.002 & 12.614 & 1.541 \\
+33 & 23.7 & $42.21~\mathrm{ms}$ & 0.002 & 12.616 & 1.543 \\
+34 & 22.3 & $44.81~\mathrm{ms}$ & 0.001 & 12.617 & 1.544 \\
+35 & 21.1 & $47.48~\mathrm{ms}$ & 0.001 & 12.618 & 1.545 \\
+36 & 19.9 & $50.23~\mathrm{ms}$ & 0.001 & 12.620 & 1.547 \\
+37 & 18.8 & $53.06~\mathrm{ms}$ & 0.001 & 12.621 & 1.548 \\
+38 & 17.9 & $55.97~\mathrm{ms}$ & 0.001 & 12.622 & 1.549 \\
+39 & 17.0 & $58.96~\mathrm{ms}$ & 0.001 & 12.623 & 1.550 \\
+40 & 16.1 & $62.02~\mathrm{ms}$ & 0.001 & 12.624 & 1.551 \\
+41 & 15.3 & $65.16~\mathrm{ms}$ & 0.001 & 12.625 & 1.552 \\
+42 & 14.6 & $68.37~\mathrm{ms}$ & 0.001 & 12.626 & 1.553 \\
+43 & 14.0 & $71.67~\mathrm{ms}$ & 0.001 & 12.627 & 1.554 \\
+44 & 13.3 & $75.04~\mathrm{ms}$ & 0.001 & 12.628 & 1.555 \\
+45 & 12.7 & $78.49~\mathrm{ms}$ & 0.001 & 12.629 & 1.556 \\
+46 & 12.2 & $82.02~\mathrm{ms}$ & 0.001 & 12.629 & 1.556 \\
+47 & 11.7 & $85.62~\mathrm{ms}$ & 0.001 & 12.630 & 1.557 \\
+48 & 11.2 & $89.30~\mathrm{ms}$ & 0.001 & 12.631 & 1.558 \\
+49 & 10.7 & $93.06~\mathrm{ms}$ & 0.001 & 12.632 & 1.559 \\
+50 & 10.3 & $96.90~\mathrm{ms}$ & 0.001 & 12.632 & 1.559 \\
+\end{longtable}
+\normalsize
+
+\section{Interpretation and limitations}
+The model predicts that the collision rate decreases approximately as $z^{-2}$ once $z\gg a$. It also predicts that most post-aperture collisions occur very near the nozzle. That qualitative conclusion is robust, but the exact cumulative collision count from $z=0$ is not: the first few millimetres are precisely where the hemispherical free-expansion approximation is least valid.
+
+For this reason, the column ``cumulative from \SI{1}{cm}'' is often the safer quantity to use when estimating additional collisions after the strongly collisional near-nozzle region. A source-specific DSMC calculation would be needed to replace the regularized analytical model in that region.
+
+The pressure measured \SI{50}{cm} away at a room-temperature wall characterizes the diffuse chamber background rather than the cold directed jet. It should therefore be treated separately from the on-axis expansion model above.
+
+\section{Reference}
+The source geometry and operating context were supplied by the user and refer to the Optics Express article with DOI
+\href{https://doi.org/10.1364/OE.560951}{10.1364/OE.560951}.
+
+\end{document}
